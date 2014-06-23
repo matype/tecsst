@@ -1,0 +1,19 @@
+{
+  "name": "tecsst",
+  "version": "0.0.1",
+  "description": "CSS testing framework without taking screenshots",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/morishitter/tecsst/git"
+  },
+  "keywords": ["css","testing"],
+  "author": "Masaaki Morishita",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+  }
+}

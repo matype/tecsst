@@ -1,4 +1,4 @@
-var Tecsst = require('..')
+var Tecsst = require('./')
 
 var tecsst = new Tecsst('test/test.css')
 

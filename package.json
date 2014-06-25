@@ -10,10 +10,15 @@
     "type": "git",
     "url": "git://github.com/morishitter/tecsst/git"
   },
-  "keywords": ["css","testing"],
+  "keywords": [
+    "css",
+    "testing"
+  ],
   "author": "Masaaki Morishita",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-  }
+  "dependencies": {
+    "css-parse": "^2.0.0",
+    "deep-equal": "^0.2.1"
+  },
+  "devDependencies": {}
 }

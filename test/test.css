@@ -1,0 +1,11 @@
+.btn, .btn-danger {
+  display: inline-block;
+  text-align: center;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #d2322d;
+}

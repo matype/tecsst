@@ -11,7 +11,7 @@ var expected  = [
     "background-color: #d2322d",
 ]
 
-var result = tecsst.parse('btn-danger')
+var result = tecsst.parse('.btn-danger')
 
 test('parse', function (t) {
     t.same(expected, result)

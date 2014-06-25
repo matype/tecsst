@@ -20,5 +20,8 @@
     "css-parse": "^2.0.0",
     "deep-equal": "^0.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "colored-tape": "^1.0.1",
+    "tap": "^0.4.11"
+  }
 }

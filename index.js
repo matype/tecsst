@@ -40,7 +40,9 @@ Tecsst.prototype.parse = function (s) {
 Tecsst.prototype.equal = function (expected, result) {
     if (deepEqual(expected, result)) {
         console.log("ok")
+        return "ok"
     } else {
         console.log("failed")
+        return "failed"
     }
 }

@@ -4,7 +4,7 @@
   "description": "CSS testing framework without taking screenshots",
   "main": "index.js",
   "scripts": {
-    "test": "tape test"
+    "test": "colored-tape test"
   },
   "repository": {
     "type": "git",

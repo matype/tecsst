@@ -28,7 +28,7 @@ var expected  = [
 
 var result = tecsst.parse(selector)
 
-tecsst.equal(expected, result)
+tecsst.equal(expected, result, ".btn-danger test")
 
 tecsst.end()
 ```

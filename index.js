@@ -11,6 +11,9 @@ function Tecsst (cssPath) {
     this.cssPath = cssPath
     this.css = fs.readFileSync(cssPath, 'utf-8').trim()
     this.ast = parse(this.css)
+    this.okCount = 0
+    this.failedCount = 0
+    this.testNum = this.okCount + this.failedCount
 }
 
 Tecsst.prototype.parse = function (s) {
@@ -40,9 +43,20 @@ Tecsst.prototype.parse = function (s) {
 Tecsst.prototype.equal = function (expected, result) {
     if (deepEqual(expected, result)) {
         console.log("ok")
+        this.okCount++
         return "ok"
     } else {
         console.log("failed")
+        this.failedCount++
         return "failed"
+    }
+}
+
+Tecsst.prototype.end = function () {
+    if (this.failedCount) {
+        console.log("test failed")
+    }
+    else {
+        console.log("all green, test clear!")
     }
 }

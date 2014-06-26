@@ -14,7 +14,7 @@ function Tecsst (cssPath) {
     this.ast = parse(this.css)
     this.okCount = 0
     this.failedCount = 0
-    this.testNum = this.okCount + this.failedCount
+    this.testNum = 0
 
     console.log("Tecsst version: " + pkg.version + "\n")
 }
@@ -51,15 +51,22 @@ Tecsst.prototype.equal = function (expected, result, desc) {
     if (deepEqual(expected, result)) {
         console.log("# " + desc + ": " + '\033[32m' + "\nok" + '\033[39m')
         this.okCount++
+        this.testNum++
+
         return "ok"
     } else {
         console.log("# " + desc + ": " + '\033[31m' + "\nnot ok" + '\033[39m')
         this.failedCount++
+        this.testNum++
+
         return "not ok"
     }
 }
 
 Tecsst.prototype.end = function () {
+    console.log("\n# tests " + this.testNum)
+    console.log('\033[32m' + "# pass " + this.okCount + '\033[39m')
+
     if (this.failedCount) {
         console.log('\n\033[31m' + "test failed" + '\033[39m')
     }

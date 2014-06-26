@@ -17,6 +17,8 @@ function Tecsst (cssPath) {
 }
 
 Tecsst.prototype.parse = function (s) {
+    this.selector = s
+
     var re = new RegExp(s)
     var properties = []
     var values = []
@@ -40,13 +42,15 @@ Tecsst.prototype.parse = function (s) {
     return ret
 }
 
-Tecsst.prototype.equal = function (expected, result) {
+Tecsst.prototype.equal = function (expected, result, desc) {
+    if (!desc) desc = this.selector
+
     if (deepEqual(expected, result)) {
-        console.log("ok")
+        console.log(desc + ": ok")
         this.okCount++
         return "ok"
     } else {
-        console.log("failed")
+        console.log(desc + ": failed")
         this.failedCount++
         return "failed"
     }
@@ -54,9 +58,11 @@ Tecsst.prototype.equal = function (expected, result) {
 
 Tecsst.prototype.end = function () {
     if (this.failedCount) {
+        console.log("")
         console.log("test failed")
     }
     else {
+        console.log("")
         console.log("all green, test clear!")
     }
 }

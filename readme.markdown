@@ -11,7 +11,7 @@ $ npm install tecsst
 ## Example
 
 ```javascript
-var Tecsst = require('./')
+var Tecsst = require('tecsst')
 
 var tecsst = new Tecsst('test/test.css')
 
@@ -31,6 +31,20 @@ var result = tecsst.parse(selector)
 tecsst.equal(expected, result, ".btn-danger test")
 
 tecsst.end()
+```
+
+result:
+
+```
+Tecsst version: 0.0.4
+
+# .btn-danger test:
+ok
+
+# tests 1
+# pass 1
+
+all green, test clear!
 ```
 
 ## License

@@ -18,7 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "css-parse": "^2.0.0",
-    "deep-equal": "^0.2.1"
+    "deep-equal": "^0.2.1",
+    "css-mq": "0.0.1"
   },
   "devDependencies": {
     "colored-tape": "^1.0.1",

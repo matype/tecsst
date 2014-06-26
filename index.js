@@ -1,10 +1,13 @@
 var fs = require('fs')
 var parse = require('css-parse')
 var deepEqual = require('deep-equal')
+var mq = require('css-mq')
 
 var pkg = require('./package.json')
 
+
 module.exports = Tecsst
+
 
 function Tecsst (cssPath) {
     if (!(this instanceof Tecsst)) return new Tecsst(cssPath);
@@ -16,10 +19,14 @@ function Tecsst (cssPath) {
     this.failedCount = 0
     this.testNum = 0
 
+    this.mqBorder = mq.borders(this.css)
+    console.log(this.mqBorder)
+
     console.log("Tecsst version: " + pkg.version + "\n")
 }
 
-Tecsst.prototype.parse = function (s) {
+
+Tecsst.prototype.parse = function (s, browserWidth) {
     this.selector = s
 
     var re = new RegExp(s)
@@ -28,14 +35,28 @@ Tecsst.prototype.parse = function (s) {
     var ret = []
 
     this.ast.stylesheet.rules.forEach(function (rule) {
-        rule.selectors.forEach(function (selector) {
-            if (selector.match(re)) {
-                rule.declarations.forEach(function (declaration) {
-                    properties.push(declaration.property)
-                    values.push(declaration.value)
+        if (rule.type === "media") {
+            rule.rules.forEach(function (mqRule) {
+                mqRule.selectors.forEach(function (selector) {
+                    if (selector.match(re)) {
+                        mqRule.declarations.forEach(function (declaration) {
+                            properties.push(declaration.property)
+                            values.push(declaration.value)
+                        })
+                    }
                 })
-            }
-        })
+            })
+        }
+        else if (rule.type === "rule") {
+            rule.selectors.forEach(function (selector) {
+                if (selector.match(re)) {
+                    rule.declarations.forEach(function (declaration) {
+                        properties.push(declaration.property)
+                        values.push(declaration.value)
+                    })
+                }
+            })
+        }
     })
 
     for (var i = 0; i < properties.length; i++) {
@@ -44,6 +65,7 @@ Tecsst.prototype.parse = function (s) {
 
     return ret
 }
+
 
 Tecsst.prototype.equal = function (expected, result, desc) {
     if (!desc) desc = this.selector
@@ -62,6 +84,7 @@ Tecsst.prototype.equal = function (expected, result, desc) {
         return "not ok"
     }
 }
+
 
 Tecsst.prototype.end = function () {
     console.log("\n# tests " + this.testNum)

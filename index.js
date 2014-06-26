@@ -2,6 +2,7 @@ var fs = require('fs')
 var parse = require('css-parse')
 var deepEqual = require('deep-equal')
 
+var pkg = require('./package.json')
 
 module.exports = Tecsst
 
@@ -14,6 +15,8 @@ function Tecsst (cssPath) {
     this.okCount = 0
     this.failedCount = 0
     this.testNum = this.okCount + this.failedCount
+
+    console.log("Tecsst version: " + pkg.version + "\n")
 }
 
 Tecsst.prototype.parse = function (s) {
@@ -46,23 +49,21 @@ Tecsst.prototype.equal = function (expected, result, desc) {
     if (!desc) desc = this.selector
 
     if (deepEqual(expected, result)) {
-        console.log(desc + ": ok")
+        console.log("# " + desc + ": " + '\033[32m' + "\nok" + '\033[39m')
         this.okCount++
         return "ok"
     } else {
-        console.log(desc + ": failed")
+        console.log("# " + desc + ": " + '\033[31m' + "\nnot ok" + '\033[39m')
         this.failedCount++
-        return "failed"
+        return "not ok"
     }
 }
 
 Tecsst.prototype.end = function () {
     if (this.failedCount) {
-        console.log("")
-        console.log("test failed")
+        console.log('\n\033[31m' + "test failed" + '\033[39m')
     }
     else {
-        console.log("")
-        console.log("all green, test clear!")
+        console.log('\n\033[32m' + "all green, test clear!" + '\033[39m')
     }
 }

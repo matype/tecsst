@@ -31,8 +31,6 @@ var result = tecsst.parse(selector)
 tecsst.equal(expected, result)
 
 tecsst.end()
-// ok
-// all green, test clear!
 ```
 
 ## License

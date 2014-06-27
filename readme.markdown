@@ -17,6 +17,8 @@ var tecsst = new Tecsst('test/test.css')
 
 var selector = '.btn-danger'
 
+var browserWidth = '480px'
+
 var expected  = [
     "display: inline-block",
     "text-align: center",
@@ -24,9 +26,10 @@ var expected  = [
     "font-size: 14px",
     "color: #fff",
     "background-color: #d2322d",
+    "width: 95%"
 ]
 
-var result = tecsst.parse(selector, '480px')
+var result = tecsst.parse(selector, browserWidth)
 
 tecsst.equal(expected, result, ".btn-danger test")
 

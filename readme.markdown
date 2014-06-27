@@ -38,6 +38,7 @@ result:
 ```
 Tecsst version: 0.0.5
 
+Browser width: 480px
 # .btn-danger test:
 ok
 

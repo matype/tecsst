@@ -27,6 +27,7 @@ function Tecsst (cssPath) {
 
 Tecsst.prototype.parse = function (s, browserWidth) {
     this.selector = s
+    this.browserWidth = browserWidth
 
     var re = new RegExp(s)
     var properties = []
@@ -80,6 +81,8 @@ Tecsst.prototype.parse = function (s, browserWidth) {
 
 Tecsst.prototype.equal = function (expected, result, desc) {
     if (!desc) desc = this.selector
+
+    console.log("Browser width: " + this.browserWidth)
 
     if (deepEqual(expected, result)) {
         console.log("# " + desc + ": " + '\033[32m' + "\nok" + '\033[39m')

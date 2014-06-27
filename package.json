@@ -1,6 +1,6 @@
 {
   "name": "tecsst",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "CSS testing framework without taking screenshots",
   "main": "index.js",
   "scripts": {

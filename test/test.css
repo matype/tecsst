@@ -10,4 +10,6 @@
   background-color: #d2322d;
 }
 
-@media screen and (max-width: 1000px) { #container { width : 95%; } }
+@media screen and (max-width: 1000px) {
+  .btn-danger { width : 95%; }
+}

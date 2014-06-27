@@ -9,9 +9,10 @@ var expected  = [
     "font-size: 14px",
     "color: #fff",
     "background-color: #d2322d",
+    "width: 95%"
 ]
 
-var result = tecsst.parse('.btn-danger')
+var result = tecsst.parse('.btn-danger', '200px')
 
 test('parse', function (t) {
     t.same(expected, result)

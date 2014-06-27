@@ -11,9 +11,10 @@ var expected  = [
     "font-size: 14px",
     "color: #fff",
     "background-color: #d2322d",
+    "width: 95%"
 ]
 
-var result = tecsst.parse(selector)
+var result = tecsst.parse(selector, '480px')
 
 tecsst.equal(expected, result, ".btn-danger test")
 

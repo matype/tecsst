@@ -26,7 +26,7 @@ var expected  = [
     "background-color: #d2322d",
 ]
 
-var result = tecsst.parse(selector)
+var result = tecsst.parse(selector, '480px')
 
 tecsst.equal(expected, result, ".btn-danger test")
 
@@ -36,7 +36,7 @@ tecsst.end()
 result:
 
 ```
-Tecsst version: 0.0.4
+Tecsst version: 0.0.5
 
 # .btn-danger test:
 ok
